@@ -17,14 +17,14 @@ class _Login_ScreenState extends State<Login_Screen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _PasswordController = TextEditingController();
-  bool _rememberMe = false; // متغير لتذكر حالة التذكر
+  bool _rememberMe = false; 
   String _email = "";
   String _password = "";
 
   @override
   void initState() {
     super.initState();
-    _loadRememberMe(); // تحميل حالة "تذكرني" من SharedPreferences
+    _loadRememberMe(); 
   }
 
   void _loadRememberMe() async {
@@ -34,7 +34,6 @@ class _Login_ScreenState extends State<Login_Screen> {
     });
   }
 
-  // حفظ حالة "تذكرني" باستخدام SharedPreferences
   void _saveRememberMe(bool value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('rememberMe', value);
@@ -48,7 +47,6 @@ class _Login_ScreenState extends State<Login_Screen> {
       );
       print("User Login: ${userCredential.user!.email}");
 
-      // حفظ حالة "تذكرني"
       _saveRememberMe(_rememberMe);
 
       Navigator.push(context, MaterialPageRoute(builder: (context) => Welcome_Screen()));
